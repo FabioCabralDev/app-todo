@@ -15,7 +15,7 @@ export class TodoListComponent implements DoCheck {
       this.taskList.push({task: event, checked: false});
   } 
   public deleteItemTaskList(event: number){
-    this.taskList.splice(event, 1);
+    return this.taskList.splice(event, 1);
   }
   public deleteAllTaskList(){
     const confirm = window.confirm("Você deseja realmente Deletar tudo?")
@@ -38,13 +38,13 @@ export class TodoListComponent implements DoCheck {
   public setLocalStorage(){
     if(this.taskList){
       this.taskList.sort( (first, last) => Number(first.checked) - Number(last.checked));
-      localStorage.setItem("list", JSON.stringify(this.taskList))
+      localStorage.setItem('list', JSON.stringify(this.taskList));
     }
   }
   constructor() { }
 
   ngDoCheck() {
-    this.setLocalStorage();
+    this.setLocalStorage()
   }
 
 
